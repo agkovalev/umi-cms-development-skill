@@ -2,7 +2,7 @@
 name: umi-cms-development
 description: "UMI.CMS development workflow for template integration, frontend custom features, extending existing modules, and external API integrations. Use this skill whenever user mentions UMI.CMS, umi.cms.2, demomarket templates, XSLT/macros integration, custom module behavior in existing components, service/API integration, frontpage design, catalog, ecommerce, users module, or any CMS customization in UMI projects—even if phrased as generic PHP/CMS work or layout integration."
 compatibility: "Targets UMI.CMS 2 codebase structure with classes/components, templates/*, and XSLT-based frontend templates. PHP 7.2.24+."
-version: "1.1"
+version: "1.0.0"
 category: "cms-development"
 tags: ["umi-cms", "php", "cms", "xslt", "template", "integration", "backend", "module-extension"]
 user-invocable: true
