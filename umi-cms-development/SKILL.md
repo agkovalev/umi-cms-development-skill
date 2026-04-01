@@ -1,7 +1,11 @@
 ---
 name: umi-cms-development
-description: "UMI.CMS development workflow for template integration, frontend custom features, extending existing modules, and external API integrations. Use this skill whenever user mentions UMI.CMS, umi.cms.2, demomarket templates, XSLT/macros integration, custom module behavior in existing components, or service/API integration in UMI projects, even if request is phrased as generic PHP/CMS work."
-compatibility: "Targets UMI.CMS 2 codebase structure with classes/components, templates/*, and XSLT-based frontend templates."
+description: "UMI.CMS development workflow for template integration, frontend custom features, extending existing modules, and external API integrations. Use this skill whenever user mentions UMI.CMS, umi.cms.2, demomarket templates, XSLT/macros integration, custom module behavior in existing components, service/API integration, frontpage design, catalog, ecommerce, users module, or any CMS customization in UMI projects—even if phrased as generic PHP/CMS work or layout integration."
+compatibility: "Targets UMI.CMS 2 codebase structure with classes/components, templates/*, and XSLT-based frontend templates. PHP 7.2.24+."
+version: "1.1"
+category: "cms-development"
+tags: ["umi-cms", "php", "cms", "xslt", "template", "integration", "backend", "module-extension"]
+user-invocable: true
 ---
 
 # UMI.CMS Development
@@ -45,6 +49,8 @@ Use these paths first:
 - `tests/` — unit/web tests and legacy test runners
 - `CODINGSTANDARDS.md` — mandatory coding rules for PHP code style and file conventions
 
+For detailed architecture walkthrough, see [references/architecture.md](references/architecture.md).
+
 ## Global workflow
 
 Always follow this sequence:
@@ -77,6 +83,8 @@ Goal: integrate ready HTML/CSS/JS into UMI template and bind dynamic data.
 - no duplicated business logic between PHP and XSLT
 - page works in desktop and mobile breakpoints used by current theme
 
+See [references/patterns.md](references/patterns.md#pattern-a-add-custom-macro) for macro examples.
+
 ## Scenario B: Custom frontend-facing functionality
 
 Goal: add or extend non-standard behavior consumed by frontend pages.
@@ -95,6 +103,8 @@ Goal: add or extend non-standard behavior consumed by frontend pages.
 - output format is documented in code comments or nearby docs
 - edge cases covered (empty data, invalid filter, unavailable dependency)
 - errors are handled without fatal output on user-facing pages
+
+See [references/patterns.md](references/patterns.md) for safe extension patterns.
 
 ## Scenario C: Extend existing module behavior
 
@@ -115,6 +125,8 @@ Goal: customize existing module logic with minimal risk.
 - existing admin/frontend methods still return expected data types
 - related module workflows are smoke-tested
 
+Refer to [references/architecture.md](references/architecture.md#extension-points-priority-order) for safe extension points hierarchy.
+
 ## Scenario D: External API integration
 
 Goal: integrate third-party service into UMI flow safely.
@@ -133,6 +145,8 @@ Goal: integrate third-party service into UMI flow safely.
 - network failures degrade gracefully
 - mapping between external payload and UMI entities is explicit
 - retry policy avoids duplicate destructive operations
+
+See [references/patterns.md#pattern-e-integrate-external-service](references/patterns.md#pattern-e-integrate-external-service) for client isolation pattern.
 
 ## Additional task groups (MVP limited coverage)
 
@@ -162,6 +176,8 @@ Use this lightweight approach:
 
 Критично: если обнаружены неожиданные сторонние изменения в тех же файлах, остановись и уточни у пользователя как продолжать.
 
+For detailed safety guardrails and common failure modes, see [references/guardrails.md](references/guardrails.md).
+
 ## Verification and reporting
 
 Before finishing, verify:
@@ -178,10 +194,17 @@ Final response format should include:
 - what was verified
 - remaining risks or assumptions
 
+## Test cases
+
+This skill is validated against common UMI.CMS development tasks. See [scripts/evals/evals.json](scripts/evals/evals.json) for 10 test scenarios covering template integration, custom functionality, module extension, API integration, and debugging.
+
 ## References
 
 Use these docs during implementation when needed:
 
+- [references/architecture.md](references/architecture.md) — detailed codebase structure and extension points
+- [references/patterns.md](references/patterns.md) — safe implementation patterns (6 common scenarios)
+- [references/guardrails.md](references/guardrails.md) — security, safety guardrails, and common failure modes
 - UMI docs: https://docs.umi-cms.ru/
 - UMI API docs: https://api.docs.umi-cms.ru/
 - Repository (if user has access): https://github.com/Umisoft/umi.cms.2

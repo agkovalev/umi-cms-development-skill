@@ -1,0 +1,76 @@
+{
+  "skill_name": "umi-cms-development",
+  "version": "1.1",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "template_integration_basic",
+      "prompt": "У меня есть готовый HTML/CSS от дизайнера для страницы товаров (каталог). Товары должны загружаться динамически из UMI.CMS каталога. Как интегрировать эту верстку в UMI шаблон?",
+      "expected_output": "Context-aware walkthrough: identify catalog module, find existing XSLT macros for product list, map HTML blocks to dynamic data, explain how to include new template fragments, verify no broken asset paths.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "custom_frontend_filter",
+      "prompt": "Нужно добавить в фильтр товаров на каталоге нестандартный фильтр по цене с допуском на основе данных из внешнего сервиса. Как это реализовать без изменения ядра?",
+      "expected_output": "Recommend extending module via customMacros.php or custom handlers; explain data flow from external service to template; suggest safe integration point (events-based or new macro); mention backward compatibility.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "eval_name": "module_extension_safe",
+      "prompt": "Хочу добавить новое поле в карточку товара в админке и на фронте. Где безопаснее это сделать в UMI модуле?",
+      "expected_output": "Explain hierarchy: customAdmin.php for admin UI, custom data providers for frontend data, customMacros.php for XSLT rendering; identify existing extension points; verify no core class.php modification needed.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "eval_name": "api_integration_external",
+      "prompt": "Нужно интегрировать ApiShip для доставки в корзину покупателя. Заказы должны синхронизироваться с UMI.CMS. Где подцепить этот функционал?",
+      "expected_output": "Design integration boundary: identify emarket module hooks (orderCreate event), suggest webhook endpoint for sync, outline idempotency strategy, mention logging and error handling, verify secrets not hardcoded.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "eval_name": "xslt_macro_new",
+      "prompt": "Как добавить новый XSLT макрос в существующий шаблон для вывода специальной формы с кастомными валидациями?",
+      "expected_output": "Create customMacros.php or extend existing; explain parameter passing; show how XSLT templates call new macro; verify it doesn't conflict with existing macros; test on real template render.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "eval_name": "coding_standards_check",
+      "prompt": "Проверь, что мой PHP код в модуле соответствует UMI кодинг-стандартам (неймспейсы, каmelCase, PHPDoc).",
+      "expected_output": "Reference CODINGSTANDARDS.md; verify UTF-8 no BOM, proper namespace structure, no side-effects in class files, method documentation, variable naming conventions.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "eval_name": "event_handler_debugging",
+      "prompt": "Я подписал обработчик на событие exchangeOnUpdateElement, но он не срабатывает. Как дебажить?",
+      "expected_output": "Explain event registration in events.php; verify handler method signature; suggest adding logging; mention event dispatcher in Service::Events(); verify module is loaded.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "eval_name": "template_data_flow",
+      "prompt": "Как использовать данные из модуля в XSLT шаблоне? Какой путь данные проходят из PHP до итогового HTML?",
+      "expected_output": "Explain: module method returns array → passed to XSLT template → processed by macros → rendered to HTML; show Service relationships; mention $data variable in XSLT.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "eval_name": "form_integration_custom",
+      "prompt": "Добавить кастомную форму в каталог с отправкой данных на внешний сервер. Форма должна работать в админке и на фронте.",
+      "expected_output": "Recommend handlers.php for form processing; explain admin UI vs frontend template paths; suggest validation/sanitization per CODINGSTANDARDS; mention CSRF/nonce if needed.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "eval_name": "module_permissions_check",
+      "prompt": "Как правильно проверять права доступа в кастомном обработчике модуля?",
+      "expected_output": "Explain permission system integration; reference capability checks; show safe patterns from existing handlers; mention admin-only vs user-facing permissions.",
+      "files": []
+    }
+  ]
+}
